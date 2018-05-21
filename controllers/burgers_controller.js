@@ -1,5 +1,6 @@
 const express = require('express');
-const burger = require('../models/burger.js');
+const burger = require('../models/burger');
+
 const router = express.Router();
 
 
@@ -11,14 +12,16 @@ router.get('/', (req, res) => {
         };
         console.log(hbsObject);
         res.render("index", hbsObject);
-    });
+    })
 });
-router.get('/api/burger', (req, res) => {
-    burger.all(data => {
-        console.log(`data: ${data}`);
-        res.json(data);
-    });
-});
+
+// router.get('/api/burger', (req, res) => {
+//     burger.all(data => {
+//         console.log(`data: ${data}`);
+//         res.json(data);
+//     });
+// });
+
 router.post("/api/burgers", (req, res) => {
     burger.create([
         "burger_name"
