@@ -1,3 +1,4 @@
+// MySQL connection initial setup
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
@@ -7,6 +8,7 @@ var connection = mysql.createConnection({
     database: "burgers_db"
 });
 
+// Make connection
 connection.connect(function(err) {
     if (err) {
         console.error("Congratulations, you've played yourself: " + err.stack);
