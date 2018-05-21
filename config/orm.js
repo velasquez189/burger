@@ -3,11 +3,12 @@ const connection = require("../config/connection.js");
 
 const printQuestionMarks = num => {
     let arr = [];
-    num.forEach(value => {
+    for (let i = 0; i < num; i++) {
         arr.push("?")
-    });
+    };
     return arr.toString();
-}
+};
+
 const objToSql = ob => {
     let arr = [];
 
@@ -20,20 +21,20 @@ const objToSql = ob => {
             }
             arr.push(key + "=" + value);
         }
+        return arr.toString();
     }
-    return arr.toString();
-}
+};
 const orm = {
-   selectAll: function (tableInput, cb) {
+    selectAll: (tableInput, cb) => {
         const queryString = "SELECT * FROM " + tableInput + ";";
-        connection.query(queryString, function (err, res) {
+        connection.query(queryString, (err, res) => {
             if (err) {
                 throw err;
             }
             cb(res);
         })
     },
-    insertOne: function (table, cols, vals, cb) {
+    insertOne: (table, cols, vals, cb) => {
         const queryString = "INSTERT INTO " + table;
         queryString += " (";
         queryString += cols.toString();
@@ -44,14 +45,14 @@ const orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, vals, function (err, res) {
+        connection.query(queryString, vals, (err, res) => {
             if (err) {
                 throw err;
             }
             cb(res);
         })
     },
-    updateOne: function(table, objColVals, condition, cb) {
+    updateOne: (table, objColVals, condition, cb) => {
         const queryString = "UPDATE" + table;
 
         queryString += "SET ";
@@ -60,25 +61,25 @@ const orm = {
         queryString += condition;
 
         console.log(queryString);
-        connection.query(queryString, function (err, res) {
+        connection.query(queryString, (err, res) => {
             if (err) {
                 throw err;
             }
             cb(res);
-        });
+        })
     },
-    deleteOne: function(table, condition, cb) {
+    deleteOne: (table, condition, cb) => {
         const queryString = "DELETE FROM " + table;
         queryString += " WHERE ";
         queryString += condition;
 
-        connection.query(queryString, function(err, res) {
+        connection.query(queryString, (err, res) => {
             if (err) {
                 throw err
             }
             cb(res);
-        })
-    },
+        });
+    }
 };
 
 // Export the orm object for the model

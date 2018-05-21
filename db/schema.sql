@@ -9,6 +9,4 @@ CREATE TABLE burgers (
     burger_name VARCHAR(100) NOT NULL,
     devoured BOOLEAN DEFAULT false,
     PRIMARY KEY (id)
-);
-
-SELECT * FROM burgers_db.burgers;
+)

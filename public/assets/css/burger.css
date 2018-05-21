@@ -1,0 +1,20 @@
+body {
+    background-image: url(./images/burger_background.JPG)
+}
+#fresh, #eaten{
+    border-radius: 7px;
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+
+#add{
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+h2{
+    color: black;
+}
+ul{
+    color: orange;
+}
