@@ -12,8 +12,8 @@ const burger = {
             cb(res);
         });
     },
-    update: (objColVals, condtion, cb) => {
-        orm.updateOne("burgers", objColVals, condtion, res => {
+    update: (objColVals, condition, cb) => {
+        orm.updateOne("burgers", objColVals, condition, res => {
             cb(res);
         });
     },

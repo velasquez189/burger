@@ -26,7 +26,7 @@ const objToSql = ob => {
 };
 const orm = {
     selectAll: (tableInput, cb) => {
-        const queryString = "SELECT * FROM " + tableInput + ";";
+        let queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, (err, res) => {
             if (err) {
                 throw err;
@@ -35,7 +35,7 @@ const orm = {
         })
     },
     insertOne: (table, cols, vals, cb) => {
-        const queryString = "INSTERT INTO " + table;
+        let queryString = "INSTERT INTO " + table;
         queryString += " (";
         queryString += cols.toString();
         queryString += ") ";
@@ -53,9 +53,9 @@ const orm = {
         })
     },
     updateOne: (table, objColVals, condition, cb) => {
-        const queryString = "UPDATE" + table;
+        let queryString = "UPDATE " + table;
 
-        queryString += "SET ";
+        queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
@@ -69,7 +69,7 @@ const orm = {
         })
     },
     deleteOne: (table, condition, cb) => {
-        const queryString = "DELETE FROM " + table;
+        let queryString = "DELETE FROM " + table;
         queryString += " WHERE ";
         queryString += condition;
 
